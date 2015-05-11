@@ -91,6 +91,11 @@ def go_red():
         call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
         time.sleep(0.5) 
         call(["echo 1 > /sys/class/gpio/gpio13/value"], shell=True)
+        
+def go_off():
+	call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
+	call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
+	call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
                                         
 
 
@@ -105,8 +110,10 @@ elif colour == "amber":
 elif colour == "green":
 	print "You requested green"
 	go_green()
-	
+elif colour == "off":
+	print "You requested off"
+	go_off()
 else:
-	print "Only 'red', 'amber' and 'green' values are accepted."
+	print "Only 'red', 'amber', 'green' and 'off' values are accepted."
 
 
