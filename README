@@ -1,0 +1,36 @@
+A tower or stack light (https://en.wikipedia.org/wiki/Stack_light) that 
+indicates the status of our CI Build System
+This tower.py script is a simple script that lives on a lighttpd server, and 
+changes various GPIO pins to reflect the state passed in a JSON message
+
+Hardware
+========
+
+1x Bifferboard
+1x Tower or Stack Light - http://www.ebay.co.uk/itm/121368679027
+3x 2n7000 MOSFETs
+1x PSU
+
+Software
+========
+
+Configure lighttpd to start by default with <code>/etc/init.d/lighttpd enable</code>
+
+Place tower.py into /www/ and configure Lighttpd as below
+
+Place a reference to /root/ci_tower/setup.sh (or wherever you've checked this out
+to) in /etc/rc.local in order to have the GPIO pins configured on boot.
+
+tower.py is a very dumb and simple python script that reads from stdin, and 
+passes it onto a JSON handler. Afterwards, it just fiddles various GPIO pins 
+to obtain the desired effect.
+
+Lighttpd Configuration
+======================
+Some modifications to the default config are required.
+
+Enable mod_cgi and mod_setenv
+Permit Access-Control-Allow-Origin, Access-Control-Allow-Methods, and 
+Access-Control-Allow-Headers headers
+Configure Lighttpd to pass .py files onto /usr/bin/python
+
