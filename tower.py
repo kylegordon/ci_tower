@@ -42,51 +42,54 @@ if colour == "":
     print "No colour specified or colour key provided"
     exit()
 
+
 def go_green():
     # Turn the others off
     call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
 
     if flash == "yes":
-    # Flash green
-        time.sleep(0.5)                                   
+        # Flash green
+        time.sleep(0.5)
         call(["echo 1 > /sys/class/gpio/gpio11/value"], shell=True)
-        time.sleep(0.5)                                   
+        time.sleep(0.5)
         call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
-        time.sleep(0.5)                                   
+        time.sleep(0.5)
         call(["echo 1 > /sys/class/gpio/gpio11/value"], shell=True)
         time.sleep(0.5)
         call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
         time.sleep(0.5)
 
     call(["echo 1 > /sys/class/gpio/gpio11/value"], shell=True)
-        
+
+
 def go_amber():
     # Turn the others off
     call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
-    
+
     if flash == "yes":
         # Flash amber
         time.sleep(0.5)
         call(["echo 1 > /sys/class/gpio/gpio12/value"], shell=True)
         time.sleep(0.5)
         call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
-        time.sleep(0.5)                                            
+        time.sleep(0.5)
         call(["echo 1 > /sys/class/gpio/gpio12/value"], shell=True)
-        time.sleep(0.5)                                            
+        time.sleep(0.5)
         call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
-        time.sleep(0.5)                                            
+        time.sleep(0.5)
 
     call(["echo 1 > /sys/class/gpio/gpio12/value"], shell=True)
-        
+
+
 def go_red():
-    # Turn the others off                                      
+    # Turn the others off
     call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
 
-    if flash == "yes"
-        # Flash amber                                              
+    if flash == "yes":
+        # Flash amber
         time.sleep(0.5)
         call(["echo 1 > /sys/class/gpio/gpio13/value"], shell=True)
         time.sleep(0.5)
@@ -95,25 +98,25 @@ def go_red():
         call(["echo 1 > /sys/class/gpio/gpio13/value"], shell=True)
         time.sleep(0.5)
         call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
-        time.sleep(0.5) 
+        time.sleep(0.5)
 
     call(["echo 1 > /sys/class/gpio/gpio13/value"], shell=True)
-        
+
+
 def go_off():
     call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
-                                        
 
 
 if colour == "red":
     print "You requested red"
     go_red(flash)
-    
+
 elif colour == "amber":
     print "You requested amber"
     go_amber(flash)
-    
+
 elif colour == "green":
     print "You requested green"
     go_green(flash)
@@ -121,7 +124,6 @@ elif colour == "green":
 elif colour == "off":
     print "You requested off"
     go_off()
+
 else:
     print "Only 'red', 'amber', 'green' and 'off' values are accepted."
-
-
