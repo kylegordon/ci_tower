@@ -43,7 +43,7 @@ if colour == "":
     exit()
 
 
-def go_green():
+def go_green(flash):
     # Turn the others off
     call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
@@ -63,7 +63,7 @@ def go_green():
     call(["echo 1 > /sys/class/gpio/gpio11/value"], shell=True)
 
 
-def go_amber():
+def go_amber(flash):
     # Turn the others off
     call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio13/value"], shell=True)
@@ -83,7 +83,7 @@ def go_amber():
     call(["echo 1 > /sys/class/gpio/gpio12/value"], shell=True)
 
 
-def go_red():
+def go_red(flash):
     # Turn the others off
     call(["echo 0 > /sys/class/gpio/gpio11/value"], shell=True)
     call(["echo 0 > /sys/class/gpio/gpio12/value"], shell=True)
