@@ -3,6 +3,18 @@ indicates the status of our CI Build System
 This tower.py script is a simple script that lives on a lighttpd server, and 
 changes various GPIO pins to reflect the state passed in a JSON message
 
+Use
+===
+
+Simply PUT or POST a JSON string to tower.py
+ie, {"status":"green", "flash":"yes"}
+
+If you omit a colour, you will get an error back in response. It accepts
+"green", "amber", "red", and "off"
+
+It optionally accepts the "flash" parameter. If yes, it will flash during the 
+transition. Anything else results in no flashes.
+
 Hardware
 ========
 
