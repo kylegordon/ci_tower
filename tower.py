@@ -36,7 +36,7 @@ data = json.loads(posted_input)
 print data
 
 colour = data.get("status")
-flash = data.get("flash", "no")
+flash = data.get("flash", "yes")
 
 if colour == "":
     print "No colour specified or colour key provided"
