@@ -10,15 +10,15 @@
 
 # enable debugging and dump to /tmp/
 
-import cgitb
-cgitb.enable(logdir='/tmp', display=True, format='text',)
-
 import sys
 import cgi
 import json
 import time
 
 from subprocess import call
+
+import cgitb
+cgitb.enable(logdir='/tmp', display=True, format='text',)
 
 print "Content-Type: text/plain;charset=utf-8"
 print
